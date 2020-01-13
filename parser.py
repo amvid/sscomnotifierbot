@@ -21,7 +21,7 @@ def get_html_text(link):
     return resp.text
 
 
-def get_latest(bot, chat_id, link, last_ad_id, link_name, user_id):
+def get_latest(bot, chat_id, link, last_ad_id, link_name):
     html = get_html_text(link)
     soup = BeautifulSoup(html, 'html.parser')
     ads = soup.find_all(id=re.compile(r'tr_[0-9]*'))
@@ -50,7 +50,7 @@ def get_latest(bot, chat_id, link, last_ad_id, link_name, user_id):
             bot.send_message(chat_id=chat_id, text=text)
             break
 
-        storage.update_last_ad_id(user_id=user_id, last_ad_id=new_last_ad_id, link_name=link_name)
+        storage.update_last_ad_id(chat_id=chat_id, last_ad_id=new_last_ad_id, link_name=link_name)
 
 
 def get_last_ad_id_by_link(link):
