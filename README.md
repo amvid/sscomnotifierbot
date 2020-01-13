@@ -37,3 +37,4 @@ List of your added links:
 ### TODO:
 - use sqlite instead of memory
 - run_repeating(callback, interval) from [telegram.ext.JobQueue](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.jobqueue.html) with given interval by user
+- support multiple pages if last_ad_id not on first page
