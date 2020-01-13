@@ -18,10 +18,10 @@ if __name__ == '__main__':
     if os.getenv('APP_ENV') == 'dev':
         import storage
         storage.save_link(
-            user_id=421649881,
+            chat_id=421649881,
             link='/lv/transport/cars/audi/a4/',
             link_name='a4',
-            last_ad_id='tr_47150993')
+            last_ad_id='tr_47010362')
 
     print('Start listening...')
     updater.start_polling()
