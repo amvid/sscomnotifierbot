@@ -11,6 +11,7 @@ def start(update, context):
 
 
 def add(update, context):
+    chat_id = update.effective_chat.id
     try:
         link = ''
         link_name = ''
@@ -43,54 +44,56 @@ def add(update, context):
             raise Exception('name not passed')
 
         last_ad_id = parser.get_last_ad_id_by_link(link)
-        storage.save_link(user_id=update.message.chat.id, link=link, link_name=link_name, last_ad_id=last_ad_id)
-        context.bot.send_message(chat_id=update.effective_chat.id, text='Saved')
+        storage.save_link(chat_id=chat_id, link=link, link_name=link_name, last_ad_id=last_ad_id)
+        context.bot.send_message(chat_id=chat_id, text='Saved')
     except Exception as e:
-        context.bot.send_message(chat_id=update.effective_chat.id, text=str(e))
+        context.bot.send_message(chat_id=chat_id, text=str(e))
 
 
 def delete(update, context):
+    chat_id = update.effective_chat.id
     try:
         if len(context.args) != 1:
             raise Exception('You can pass only name argument, example: /del a4')
 
-        link_name = context.args[0].split('=')[0]
+        link_name = context.args[0]
 
         if not link_name:
             raise Exception('name not passed')
 
-        storage.del_link(user_id=update.message.chat.id, link_name=link_name)
-        context.bot.send_message(chat_id=update.effective_chat.id, text='Successfully deleted')
+        storage.del_link(chat_id=chat_id, link_name=link_name)
+        context.bot.send_message(chat_id=chat_id, text='Successfully deleted')
     except Exception as e:
-        context.bot.send_message(chat_id=update.effective_chat.id, text=str(e))
+        context.bot.send_message(chat_id=chat_id, text=str(e))
 
 
 def notify(update, context):
+    chat_id = update.effective_chat.id
     try:
-        user_id = update.message.chat.id
-        links = storage.get_links(user_id=user_id)
+        links = storage.get_links(chat_id=chat_id)
 
         for link in links:
+            context.bot.send_message(chat_id=chat_id, text=f'<{link}>')
             parser.get_latest(bot=context.bot,
-                              chat_id=update.effective_chat.id,
+                              chat_id=chat_id,
                               link=links[link]['link'],
                               last_ad_id=links[link]['last_ad_id'],
-                              user_id=user_id,
                               link_name=link)
 
-        context.bot.send_message(chat_id=update.effective_chat.id, text='Finished')
+            context.bot.send_message(chat_id=chat_id, text=f'</{link}>')
     except Exception as e:
-        context.bot.send_message(chat_id=update.effective_chat.id, text=str(e))
+        context.bot.send_message(chat_id=chat_id, text=str(e))
 
 
 def get_user_links(update, context):
+    chat_id = update.effective_chat.id
     try:
-        links = storage.get_links(user_id=update.message.chat.id)
+        links = storage.get_links(chat_id=chat_id)
         text = ''
 
         for link in links:
             text += f'\n{link}: {links[link]["link"]}'
 
-        context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+        context.bot.send_message(chat_id=chat_id, text=text)
     except Exception as e:
-        context.bot.send_message(chat_id=update.effective_chat.id, text=str(e))
+        context.bot.send_message(chat_id=chat_id, text=str(e))
