@@ -4,9 +4,9 @@
 
 1. git clone https://github.com/vfilipovsky/sscomnotifierbot.git && cd sscomnotifierbot
 2. cp .env.dist .env
+3. cp storage.sqlite.dist storage.sqlite
 3. put [telegram bot token](https://core.telegram.org/bots) to .env
-4. pipenv shell
-5. pipenv install
+4. pip install -r requirements.txt
 
 
 ### Usage
@@ -35,7 +35,7 @@ List of your added links:
 ```@sscomnotifierbot```
 
 ### TODO:
-- use sqlite instead of memory
+- [x] use sqlite instead of memory
 - run_repeating(callback, interval) from [telegram.ext.JobQueue](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.jobqueue.html) with given interval by user
 - support multiple pages if last_ad_id not on first page
 - filters

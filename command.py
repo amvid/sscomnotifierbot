@@ -73,14 +73,14 @@ def notify(update, context):
         links = storage.get_links(chat_id)
 
         for link in links:
-            context.bot.send_message(chat_id, text=f'<{link}>')
+            context.bot.send_message(chat_id, text=f"<{link['name']}>")
             parser.get_latest(context.bot,
                               chat_id,
-                              links[link]['link'],
-                              links[link]['last_ad_id'],
-                              link)
+                              link['link'],
+                              link['last_ad_id'],
+                              link['name'])
 
-            context.bot.send_message(chat_id, text=f'</{link}>')
+            context.bot.send_message(chat_id, text=f"</{link['name']}>")
     except Exception as e:
         context.bot.send_message(chat_id, text=str(e))
 
@@ -92,7 +92,7 @@ def get_user_links(update, context):
         text = ''
 
         for link in links:
-            text += f'\n{link}: {links[link]["link"]}'
+            text += f"\n{link['name']}: {link['link']}"
 
         context.bot.send_message(chat_id, text=text)
     except Exception as e:

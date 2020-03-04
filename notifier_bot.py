@@ -15,13 +15,5 @@ dispatcher.add_handler(CommandHandler('del', command.delete))
 dispatcher.add_handler(CommandHandler('links', command.get_user_links))
 
 if __name__ == '__main__':
-    if os.getenv('APP_ENV') == 'dev':
-        import storage
-        storage.save_link(
-            421649881,
-            '/lv/transport/cars/audi/a4/',
-            'a4',
-            'tr_47254114')
-
     print('Start listening...')
     updater.start_polling()
