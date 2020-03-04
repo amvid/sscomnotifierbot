@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 
-MAX_LINKS_PER_CHAT = 7
+MAX_LINKS_PER_CHAT = 15
 SETTINGS = defaultdict(dict)
 
 

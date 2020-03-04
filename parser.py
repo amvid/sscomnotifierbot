@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import storage
 import requests
 import re
+import time
 
 
 HOST = 'https://ss.com'
@@ -13,7 +14,9 @@ def get_html_text(link):
     resp = session_request.get(url,
                                headers={
                                    'Content-type': 'application/x-www-form-urlencoded',
-                                   'Referrer': HOST})
+                                   'Referrer': HOST,
+                                   'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36'
+                               })
 
     if resp.status_code != 200:
         raise Exception('Something went wrong with url or it not exists: ' + url)
@@ -29,6 +32,7 @@ def get_latest(bot, chat_id, link, last_ad_id, link_name):
     new_last_ad_id = 0
 
     for ad in ads:
+        time.sleep(0.5)
         current_id = ad.get('id')
 
         if current_id == last_ad_id:
@@ -47,10 +51,10 @@ def get_latest(bot, chat_id, link, last_ad_id, link_name):
                 continue
 
             text = HOST + link_tag.get('href')
-            bot.send_message(chat_id=chat_id, text=text)
+            bot.send_message(chat_id, text=text)
             break
 
-        storage.update_last_ad_id(chat_id=chat_id, last_ad_id=new_last_ad_id, link_name=link_name)
+        storage.update_last_ad_id(chat_id, link_name, new_last_ad_id)
 
 
 def get_last_ad_id_by_link(link):
