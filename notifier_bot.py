@@ -6,7 +6,7 @@ load_dotenv()
 
 
 updater = Updater(token=os.getenv('TELEGRAM_TOKEN'), use_context=True, request_kwargs={
-    'read_timeout': 20, 'connect_timeout': 20
+    'read_timeout': 30, 'connect_timeout': 30
 })
 
 dispatcher = updater.dispatcher
