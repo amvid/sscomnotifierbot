@@ -71,18 +71,19 @@ def delete(update, context):
 def notify(update, context):
     chat_id = update.effective_chat.id
     try:
+        context.bot.send_message(chat_id, text='Started...')
         links = storage.get_links(chat_id)
 
         for link in links:
             time.sleep(1)
-            context.bot.send_message(chat_id, text=f"<{link['name']}>")
+
             parser.get_latest(context.bot,
                               chat_id,
                               link['link'],
                               link['last_ad_id'],
                               link['name'])
 
-            context.bot.send_message(chat_id, text=f"</{link['name']}>")
+        context.bot.send_message(chat_id, text='Finished')
     except Exception as e:
         context.bot.send_message(chat_id, text=str(e))
 
