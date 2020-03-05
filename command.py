@@ -1,6 +1,5 @@
 import parser
 import storage
-import time
 
 
 COMMANDS = ('/start', '/add', '/del', '/notify', '/links')
@@ -75,8 +74,6 @@ def notify(update, context):
         links = storage.get_links(chat_id)
 
         for link in links:
-            time.sleep(1)
-
             parser.get_latest(context.bot,
                               chat_id,
                               link['link'],

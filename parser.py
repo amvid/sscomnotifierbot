@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import storage
 import requests
 import re
+import time
 
 HOST = 'https://ss.com'
 
@@ -31,6 +32,7 @@ def get_latest(bot, chat_id, link, last_ad_id, link_name):
     new_last_ad_id = 0
 
     for ad in ads:
+        time.sleep(1)
         current_id = ad.get('id')
 
         if current_id == last_ad_id:
