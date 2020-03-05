@@ -55,7 +55,7 @@ def save_link(chat_id, link, link_name, last_ad_id):
         raise Exception("Name already exists")
 
     query(
-        f"INSERT INTO settings (chat_id, last_ad_id, link, link_name) "
+        "INSERT INTO settings (chat_id, last_ad_id, link, link_name) "
         f"VALUES ({chat_id}, '{last_ad_id}', '{link}', '{link_name}')",
         True
     )

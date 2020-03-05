@@ -15,5 +15,5 @@ dispatcher.add_handler(CommandHandler('del', command.delete))
 dispatcher.add_handler(CommandHandler('links', command.get_user_links))
 
 if __name__ == '__main__':
-    print('Start listening...')
     updater.start_polling()
+    print('Start listening...')

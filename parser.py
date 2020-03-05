@@ -15,7 +15,8 @@ def get_html_text(link):
                                headers={
                                    'Content-type': 'application/x-www-form-urlencoded',
                                    'Referrer': HOST,
-                                   'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36'
+                                   'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 '
+                                                 '(KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36'
                                })
 
     if resp.status_code != 200:
@@ -65,4 +66,4 @@ def get_last_ad_id_by_link(link):
     for ad in ads:
         return ad.get('id')
 
-    raise Exception('Wrong link')
+    raise Exception('No ads found by link: ' + link)
