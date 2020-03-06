@@ -67,22 +67,20 @@ def delete(update, context):
         context.bot.send_message(chat_id, text=str(e))
 
 
-def notify(update, context):
-    chat_id = update.effective_chat.id
-    try:
-        context.bot.send_message(chat_id, text='Started...')
-        links = storage.get_links(chat_id)
+def notify_job(context):
+    links = storage.get_all()
 
-        for link in links:
-            parser.get_latest(context.bot,
-                              chat_id,
-                              link['link'],
-                              link['last_ad_id'],
-                              link['name'])
+    for link in links:
+        try:
+            parser.get_latest(
+                context.bot,
+                link['chat_id'],
+                link['link'],
+                link['last_ad_id'],
+                link['name'])
 
-        context.bot.send_message(chat_id, text='Finished')
-    except Exception as e:
-        context.bot.send_message(chat_id, text=str(e))
+        except Exception as e:
+            context.bot.send_message(link['chat_id'], text=str(e))
 
 
 def get_user_links(update, context):
