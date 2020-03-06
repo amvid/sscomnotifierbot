@@ -6,7 +6,8 @@
 2. cp .env.dist .env
 3. cp storage.sqlite.dist storage.sqlite
 3. put [telegram bot token](https://core.telegram.org/bots) to .env
-4. pip install -r requirements.txt
+4. put interval to .env (in seconds)
+5. pip install -r requirements.txt
 
 
 ### Usage
