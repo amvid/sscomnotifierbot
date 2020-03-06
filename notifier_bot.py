@@ -13,7 +13,6 @@ dispatcher = updater.dispatcher
 job_queue = updater.job_queue
 
 dispatcher.add_handler(CommandHandler('start', command.start))
-dispatcher.add_handler(CommandHandler('notify', command.notify))
 dispatcher.add_handler(CommandHandler('add', command.add))
 dispatcher.add_handler(CommandHandler('del', command.delete))
 dispatcher.add_handler(CommandHandler('links', command.get_user_links))

@@ -50,7 +50,7 @@ def get_latest(bot, chat_id, link, last_ad_id, link_name):
             if not link_tag:
                 continue
 
-            text = HOST + link_tag.get('href')
+            text = f"{link_name}:\n{HOST + link_tag.get('href')}"
             bot.send_message(chat_id, text=text)
             break
 

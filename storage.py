@@ -61,6 +61,23 @@ def save_link(chat_id, link, link_name, last_ad_id):
     )
 
 
+def get_all():
+    links = query(f'SELECT * FROM settings')
+
+    res = []
+
+    for link in links:
+        res.append({
+            'id': link[0],
+            'chat_id': link[1],
+            'last_ad_id': link[2],
+            'name': link[3],
+            'link': link[4]
+        })
+
+    return res
+
+
 def del_link(chat_id, link_name):
     links = get_links(chat_id)
 
