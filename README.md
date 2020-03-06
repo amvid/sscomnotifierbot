@@ -23,20 +23,16 @@ Delete link:
 
 ```/del a4```
 
-Get updates foreach link you have added:
-
-```/notify```
-
 List of your added links:
 
 ```/links```
 
 
 ### Or just add my current bot in telegram
-```@sscomnotifierbot```
+```@sscomnotifierbot``` it will send you updates every 5 min
 
 ### TODO:
 - [x] use sqlite instead of memory
-- run_repeating(callback, interval) from [telegram.ext.JobQueue](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.jobqueue.html) with given interval by user
+- [x] run_repeating(callback, interval) from [telegram.ext.JobQueue](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.jobqueue.html)
 - support multiple pages if last_ad_id not on first page
 - filters
