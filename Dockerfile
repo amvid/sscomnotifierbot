@@ -1,4 +1,6 @@
-FROM python:3
+FROM python:3-alpine
+
+RUN apk add --no-cache --virtual .pynacl_deps build-base python3-dev libffi-dev
 
 WORKDIR /usr/src/app
 
