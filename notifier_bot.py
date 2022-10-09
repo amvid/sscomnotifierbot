@@ -8,7 +8,7 @@ load_dotenv()
 updater = Updater(token=os.getenv('TELEGRAM_TOKEN'),
                   use_context=True,
                   request_kwargs={
-                        'read_timeout': 30, 'connect_timeout': 30})
+    'read_timeout': 30, 'connect_timeout': 30})
 
 dispatcher = updater.dispatcher
 job_queue = updater.job_queue

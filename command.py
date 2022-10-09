@@ -17,7 +17,8 @@ def add(update, context):
         link_name = ''
 
         if len(context.args) != 2:
-            raise Exception('Wrong args, correct example: /add name=a4 uri=/lv/transport/cars/audi/a4')
+            raise Exception(
+                'Wrong args, correct example: /add name=a4 uri=/lv/transport/cars/audi/a4')
 
         for arg in context.args:
             if arg.startswith('name='):
@@ -35,7 +36,8 @@ def add(update, context):
 
                 continue
 
-            raise Exception('Wrong args, correct example: /add name=a4 uri=/lv/transport/cars/audi/a4')
+            raise Exception(
+                'Wrong args, correct example: /add name=a4 uri=/lv/transport/cars/audi/a4')
 
         if not link:
             raise Exception('link not passed')
@@ -54,7 +56,8 @@ def delete(update, context):
     chat_id = update.effective_chat.id
     try:
         if len(context.args) != 1:
-            raise Exception('You can pass only name argument, example: /del a4')
+            raise Exception(
+                'You can pass only name argument, example: /del a4')
 
         link_name = context.args[0]
 

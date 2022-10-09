@@ -4,16 +4,12 @@
 
 1. git clone https://github.com/vfilipovsky/sscomnotifierbot.git && cd sscomnotifierbot
 2. cp .env.dist .env
-3. cp storage.sqlite.dist storage.sqlite
 3. put [telegram bot token](https://core.telegram.org/bots) to .env
 4. put interval to .env (in seconds)
-5. pip install -r requirements.txt
+5. docker-compose up
 
 
 ### Usage
-Start bot by running:
-
-```python notifier_bot.py```
 
 Add valid link:
 

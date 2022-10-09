@@ -19,7 +19,8 @@ def get_html_text(link):
                                })
 
     if resp.status_code != 200:
-        raise Exception('Something went wrong with url or it not exists: ' + url)
+        raise Exception(
+            'Something went wrong with url or it not exists: ' + url)
 
     return resp.text
 

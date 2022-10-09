@@ -90,4 +90,5 @@ def del_link(chat_id, link_name):
     if not found:
         raise Exception(f"{link_name} not exists")
 
-    query(f"DELETE FROM settings WHERE chat_id = {chat_id} AND link_name = '{link_name}'", True)
+    query(
+        f"DELETE FROM settings WHERE chat_id = {chat_id} AND link_name = '{link_name}'", True)
