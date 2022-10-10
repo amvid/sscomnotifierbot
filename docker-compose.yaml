@@ -3,7 +3,7 @@ version: '3'
 services:
   sscomnotifierbot:
     build: .
-    container_name: 'sscomnotifierbot'
+    container_name: sscomnotifierbot
     working_dir: /usr/src/app
     volumes:
       - .:/usr/src/app
