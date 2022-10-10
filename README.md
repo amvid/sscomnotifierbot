@@ -8,6 +8,11 @@
 4. put interval to .env (in seconds)
 5. docker-compose up
 
+### Docker image
+
+```bash
+TELEGRAM_TOKEN=your-token APP_ENV=prod INTERVAL=5 docker run -d --name=sscomnotifierbot vfilipovsky/sscomnotifierbot
+```
 
 ### Usage
 
