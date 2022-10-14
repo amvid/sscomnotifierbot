@@ -1,3 +1,4 @@
+from telegram.error import Unauthorized
 import parser
 import storage
 
@@ -81,9 +82,18 @@ def notify_job(context):
                 link['link'],
                 link['last_ad_id'],
                 link['name'])
-
         except Exception as e:
-            context.bot.send_message(link['chat_id'], text=str(e))
+            try:
+                context.bot.send_message(link['chat_id'], text=str(e))
+            except Unauthorized:
+                remove_all(link['chat_id'])
+
+
+def remove_all(chat_id):
+    try:
+        storage.remove_all(chat_id)
+    except Exception as e:
+        print(e)
 
 
 def get_user_links(update, context):

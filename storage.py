@@ -25,6 +25,11 @@ def update_last_ad_id(chat_id, link_name, last_ad_id):
     )
 
 
+def remove_all(chat_id):
+    query(
+        f"DELETE FROM settings WHERE chat_id = {chat_id}", True)
+
+
 def get_links(chat_id):
     links = query(f"SELECT * FROM settings WHERE chat_id = {chat_id}")
     if not any(links):
