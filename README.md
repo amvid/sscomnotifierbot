@@ -11,7 +11,7 @@
 ### Docker image
 
 ```bash
-TELEGRAM_TOKEN=your-token APP_ENV=prod INTERVAL=5 docker run -d --name=sscomnotifierbot vfilipovsky/sscomnotifierbot
+TELEGRAM_TOKEN=your-token APP_ENV=prod INTERVAL=5 docker run -d --name=sscomnotifierbot -v sscomnotifierbot_vol:/usr/src/app vfilipovsky/sscomnotifierbot
 ```
 
 ### Usage
